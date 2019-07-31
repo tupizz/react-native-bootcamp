@@ -1,5 +1,5 @@
 {
-  "name": "react-native",
+  "name": "reactNative",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "react": "16.8.6",
-    "react-native": "0.60.4"
+    "react-native": "0.60.4",
+    "reactotron-react-native": "^3.6.4"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
