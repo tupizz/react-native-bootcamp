@@ -6,12 +6,18 @@
     "start": "react-native start",
     "start-sem-cache": "react-native start --reset-cache",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "run-android": "react-native run-android",
+    "reverse-ports-reactotron": "adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.4",
-    "reactotron-react-native": "^3.6.4"
+    "react-native-gesture-handler": "^1.3.0",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.11.1",
+    "reactotron-react-native": "^3.6.4",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
