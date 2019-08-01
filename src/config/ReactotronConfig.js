@@ -5,6 +5,7 @@ if (__DEV__) {
         .useReactNative()
         .connect();
 
+    // eslint-disable-next-line no-console
     console.tron = tron;
 
     tron.clear();
