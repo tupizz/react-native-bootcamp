@@ -18,11 +18,13 @@ import {
     Bio,
     ProfileButton,
     ProfileButtonText,
+    DeleteButton,
+    ButtonContainer,
 } from './styles';
 
 class Main extends Component {
     static navigationOptions = {
-        title: 'Hub git',
+        title: 'Hub of Git',
     };
 
     static propTypes = {
@@ -81,6 +83,13 @@ class Main extends Component {
         navigation.navigate('User', { user });
     };
 
+    handleDeleteUser = userToDelete => {
+        const { users } = this.state;
+        this.setState({
+            users: users.filter(user => user.login !== userToDelete.login),
+        });
+    };
+
     render() {
         const { users, newUser, loading } = this.state;
 
@@ -118,13 +127,25 @@ class Main extends Component {
                             <Name>{item.name}</Name>
                             <Bio>{item.bio}</Bio>
 
-                            <ProfileButton
-                                onPress={() => this.handleNavigate(item)}
-                            >
-                                <ProfileButtonText>
-                                    Ver perfil
-                                </ProfileButtonText>
-                            </ProfileButton>
+                            <ButtonContainer>
+                                <ProfileButton
+                                    onPress={() => this.handleNavigate(item)}
+                                >
+                                    <ProfileButtonText>
+                                        Ver perfil
+                                    </ProfileButtonText>
+                                </ProfileButton>
+
+                                <DeleteButton
+                                    onPress={() => this.handleDeleteUser(item)}
+                                >
+                                    <Icon
+                                        name="delete"
+                                        size={20}
+                                        color="#FFF"
+                                    />
+                                </DeleteButton>
+                            </ButtonContainer>
                         </User>
                     )}
                 />

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React, { Component } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 
@@ -48,6 +48,11 @@ export default class User extends Component {
         });
     }
 
+    handleStarredPress(starred) {
+        const { navigation } = this.props;
+        navigation.navigate('WebViewPage', { starred });
+    }
+
     render() {
         const { navigation } = this.props;
         const { stars, loading } = this.state;
@@ -69,15 +74,19 @@ export default class User extends Component {
                         data={stars}
                         keyExtractor={star => String(star.id)}
                         renderItem={({ item }) => (
-                            <Starred>
-                                <OwnerAvatar
-                                    source={{ uri: item.owner.avatar_url }}
-                                />
-                                <Info>
-                                    <Title>{item.name}</Title>
-                                    <Author>{item.owner.login}</Author>
-                                </Info>
-                            </Starred>
+                            <TouchableOpacity
+                                onPress={() => this.handleStarredPress(item)}
+                            >
+                                <Starred>
+                                    <OwnerAvatar
+                                        source={{ uri: item.owner.avatar_url }}
+                                    />
+                                    <Info>
+                                        <Title>{item.name}</Title>
+                                        <Author>{item.owner.login}</Author>
+                                    </Info>
+                                </Starred>
+                            </TouchableOpacity>
                         )}
                     />
                 )}
