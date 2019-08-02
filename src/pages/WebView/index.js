@@ -20,7 +20,7 @@ export default class WebViewPage extends Component {
     componentDidMount() {
         const { navigation } = this.props;
         const starred = navigation.getParam('starred');
-        console.tron.log(starred);
+
         this.setState({
             repository: starred,
         });
